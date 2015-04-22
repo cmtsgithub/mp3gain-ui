@@ -1,0 +1,8 @@
+./**/.svn
+*.iml
+.classpath
+.idea
+.project
+.settings
+.svn
+target
