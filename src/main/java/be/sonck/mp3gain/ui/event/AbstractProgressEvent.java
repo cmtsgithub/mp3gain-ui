@@ -6,11 +6,16 @@ public abstract class AbstractProgressEvent implements Event {
 	private final String text;
 
 	public AbstractProgressEvent(int currentValue, int endValue, String text) {
-		if (currentValue < 0 || currentValue > endValue) {
+		if (currentValue < 0) {
 			throw new IllegalArgumentException("value " + currentValue + " is not a valid progress indicator");
 		}
-		
-		this.value = (currentValue * 100) / endValue;
+
+		if (currentValue > endValue) {
+			this.value = 10000 / endValue;
+		} else {
+			this.value = (currentValue * 100) / endValue;
+		}
+
 		this.text = text;
 	}
 	
